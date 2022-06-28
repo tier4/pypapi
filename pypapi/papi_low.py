@@ -32,8 +32,8 @@ Simple example::
     <https://github.com/flozz/pypapi/issues>`_.
 """
 
-
-from ._papi import lib, ffi
+from pkgutil import read_code
+from ._papiex import lib, ffi
 from .exceptions import papi_error, PapiError, PapiInvalidValueError
 from .consts import PAPI_VER_CURRENT, PAPI_NULL
 
@@ -506,3 +506,40 @@ def stop(eventSet):
     rcode = lib.PAPI_stop(eventSet, values)
 
     return rcode, ffi.unpack(values, eventCount)
+
+#========================================================
+def multiplex_init():
+    rcode = lib.PAPI_multiplex_init()
+    return rcode
+
+def set_multiplex(eventSet):
+    rcode = lib.PAPI_set_multiplex(eventSet)
+    return rcode
+
+def assign_eventset_component(eventSet, cidx):
+    rcode = lib.PAPI_assign_eventset_component(eventSet, cidx)
+    return rcode
+
+def set_inherit(eventSet):
+    rcode = lib.PAPI_set_inherit(eventSet)
+    return rcode
+
+def reset(eventSet):
+    rcode = lib.PAPI_reset(eventSet)
+    return rcode
+
+def set_domain_to_eventset(domain, eventSet):
+    rcode = lib.PAPI_set_domain_to_eventset(domain, eventSet)
+    return rcode
+
+def set_granurality_to_eventset(gran, eventSet):
+    rcode = lib.PAPI_set_granurality_to_eventset(gran, eventSet)
+    return rcode
+
+import array
+def get_event_name_to_code(eventName):
+    c_arg = ffi.new("char[]", eventName.encode('ascii'))
+    rcode = lib.PAPI_get_event_name_to_code(c_arg)
+    if rcode < 0:
+        raise PapiError(message="No such event: %s" % eventName)
+    return rcode

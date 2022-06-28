@@ -7,7 +7,7 @@ Some constants used by PAPI.
 """
 
 
-from ._papi import lib
+from ._papiex import lib
 
 
 # Version
@@ -17,7 +17,7 @@ def _papi_version_number(maj, min_, rev, inc):
 
 
 #: PAPI version, as used internaly
-PAPI_VERSION = _papi_version_number(5, 5, 1, 0)
+PAPI_VERSION = _papi_version_number(6, 0, 0, 1)
 
 #: PAPI version, without the revision and increment part
 PAPI_VER_CURRENT = PAPI_VERSION & 0xFFFF0000

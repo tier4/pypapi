@@ -1,6 +1,6 @@
 import functools
 
-from ._papi import lib
+from ._papiex import lib
 
 
 class PapiError(Exception):

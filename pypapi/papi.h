@@ -57,26 +57,26 @@
 
 // PAPI HIGH (definitions from papi.h)
 
-int PAPI_accum_counters(long long * values, int array_len); /**< add current counts to array and reset counters */
-int PAPI_num_counters(void); /**< get the number of hardware counters available on the system */
-int PAPI_num_components(void); /**< get the number of components available on the system */
-int PAPI_read_counters(long long * values, int array_len); /**< copy current counts to array and reset counters */
-int PAPI_start_counters(int *events, int array_len); /**< start counting hardware events */
-int PAPI_stop_counters(long long * values, int array_len); /**< stop counters and return current counts */
-int PAPI_flips(float *rtime, float *ptime, long long * flpins, float *mflips); /**< simplified call to get Mflips/s (floating point instruction rate), real and processor time */
-int PAPI_flops(float *rtime, float *ptime, long long * flpops, float *mflops); /**< simplified call to get Mflops/s (floating point operation rate), real and processor time */
-int PAPI_ipc(float *rtime, float *ptime, long long * ins, float *ipc); /**< gets instructions per cycle, real and processor time */
-int PAPI_epc(int event, float *rtime, float *ptime, long long *ref, long long *core, long long *evt, float *epc); /**< gets (named) events per cycle, real and processor time, reference and core cycles */
+//int PAPI_accum_counters(long long * values, int array_len); /**< add current counts to array and reset counters */
+//int PAPI_num_counters(void); /**< get the number of hardware counters available on the system */
+//int PAPI_num_components(void); /**< get the number of components available on the system */
+//int PAPI_read_counters(long long * values, int array_len); /**< copy current counts to array and reset counters */
+//int PAPI_start_counters(int *events, int array_len); /**< start counting hardware events */
+//int PAPI_stop_counters(long long * values, int array_len); /**< stop counters and return current counts */
+//int PAPI_flips(float *rtime, float *ptime, long long * flpins, float *mflips); /**< simplified call to get Mflips/s (floating point instruction rate), real and processor time */
+//int PAPI_flops(float *rtime, float *ptime, long long * flpops, float *mflops); /**< simplified call to get Mflops/s (floating point operation rate), real and processor time */
+//int PAPI_ipc(float *rtime, float *ptime, long long * ins, float *ipc); /**< gets instructions per cycle, real and processor time */
+//int PAPI_epc(int event, float *rtime, float *ptime, long long *ref, long long *core, long long *evt, float *epc); /**< gets (named) events per cycle, real and processor time, reference and core cycles */
 
 
 // PAPI LOW (definitions from papi.h)
 // (commented definitions are not (yet?) binded)
 
-int PAPI_accum(int EventSet, long long * values); /**< accumulate and reset hardware events from an event set */
+//int PAPI_accum(int EventSet, long long * values); /**< accumulate and reset hardware events from an event set */
 int PAPI_add_event(int EventSet, int Event); /**< add single PAPI preset or native hardware event to an event set */
 // int PAPI_add_named_event(int EventSet, char *EventName); /**< add an event by name to a PAPI event set */
 int PAPI_add_events(int EventSet, int *Events, int number); /**< add array of PAPI preset or native hardware events to an event set */
-// int PAPI_assign_eventset_component(int EventSet, int cidx); /**< assign a component index to an existing but empty eventset */
+int PAPI_assign_eventset_component(int EventSet, int cidx); /**< assign a component index to an existing but empty eventset */
 int PAPI_attach(int EventSet, unsigned long tid); /**< attach specified event set to a specific process or thread id */
 int PAPI_cleanup_eventset(int EventSet); /**< remove all PAPI events from an event set */
 int PAPI_create_eventset(int *EventSet); /**< create a new empty PAPI event set */
@@ -91,26 +91,26 @@ int PAPI_destroy_eventset(int *EventSet); /**< deallocates memory associated wit
 // const PAPI_exe_info_t *PAPI_get_executable_info(void); /**< get the executable's address space information */
 // const PAPI_hw_info_t *PAPI_get_hardware_info(void); /**< get information about the system hardware */
 // const PAPI_component_info_t *PAPI_get_component_info(int cidx); /**< get information about the component features */
-// int PAPI_get_multiplex(int EventSet); /**< get the multiplexing status of specified event set */
+int PAPI_get_multiplex(int EventSet); /**< get the multiplexing status of specified event set */
 // int PAPI_get_opt(int option, PAPI_option_t * ptr); /**< query the option settings of the PAPI library or a specific event set */
 // int PAPI_get_cmp_opt(int option, PAPI_option_t * ptr,int cidx); /**< query the component specific option settings of a specific event set */
-// long long PAPI_get_real_cyc(void); /**< return the total number of cycles since some arbitrary starting point */
-// long long PAPI_get_real_nsec(void); /**< return the total number of nanoseconds since some arbitrary starting point */
-// long long PAPI_get_real_usec(void); /**< return the total number of microseconds since some arbitrary starting point */
+long long PAPI_get_real_cyc(void); /**< return the total number of cycles since some arbitrary starting point */
+long long PAPI_get_real_nsec(void); /**< return the total number of nanoseconds since some arbitrary starting point */
+long long PAPI_get_real_usec(void); /**< return the total number of microseconds since some arbitrary starting point */
 // const PAPI_shlib_info_t *PAPI_get_shared_lib_info(void); /**< get information about the shared libraries used by the process */
 // int PAPI_get_thr_specific(int tag, void **ptr); /**< return a pointer to a thread specific stored data structure */
 // int PAPI_get_overflow_event_index(int Eventset, long long overflow_vector, int *array, int *number); /**< # decomposes an overflow_vector into an event index array */
-// long long PAPI_get_virt_cyc(void); /**< return the process cycles since some arbitrary starting point */
-// long long PAPI_get_virt_nsec(void); /**< return the process nanoseconds since some arbitrary starting point */
-// long long PAPI_get_virt_usec(void); /**< return the process microseconds since some arbitrary starting point */
+long long PAPI_get_virt_cyc(void); /**< return the process cycles since some arbitrary starting point */
+long long PAPI_get_virt_nsec(void); /**< return the process nanoseconds since some arbitrary starting point */
+long long PAPI_get_virt_usec(void); /**< return the process microseconds since some arbitrary starting point */
 int PAPI_is_initialized(void); /**< return the initialized state of the PAPI library */
 int PAPI_library_init(int version); /**< initialize the PAPI library */
 int PAPI_list_events(int EventSet, int *Events, int *number); /**< list the events that are members of an event set */
 // int PAPI_list_threads(unsigned long *tids, int *number); /**< list the thread ids currently known to PAPI */
 // int PAPI_lock(int); /**< lock one of two PAPI internal user mutex variables */
-// int PAPI_multiplex_init(void); /**< initialize multiplex support in the PAPI library */
+int PAPI_multiplex_init(void); /**< initialize multiplex support in the PAPI library */
 // int PAPI_num_cmp_hwctrs(int cidx); /**< return the number of hardware counters for a specified component */
-// int PAPI_num_events(int EventSet); /**< return the number of events in an event set */
+int PAPI_num_events(int EventSet); /**< return the number of events in an event set */
 // int PAPI_overflow(int EventSet, int EventCode, int threshold, int flags, PAPI_overflow_handler_t handler); /**< set up an event set to begin registering overflows */
 // void PAPI_perror(char *msg ); /**< Print a PAPI error message */
 // int PAPI_profil(void *buf, unsigned bufsiz, caddr_t offset, unsigned scale, int EventSet, int EventCode, int threshold, int flags); /**< generate PC histogram data where hardware counter overflow occurs */
@@ -122,13 +122,13 @@ int PAPI_read(int EventSet, long long * values); /**< read hardware events from 
 int PAPI_remove_event(int EventSet, int EventCode); /**< remove a hardware event from a PAPI event set */
 // int PAPI_remove_named_event(int EventSet, char *EventName); /**< remove a named event from a PAPI event set */
 int PAPI_remove_events(int EventSet, int *Events, int number); /**< remove an array of hardware events from a PAPI event set */
-// int PAPI_reset(int EventSet); /**< reset the hardware event counts in an event set */
-// int PAPI_set_debug(int level); /**< set the current debug level for PAPI */
+int PAPI_reset(int EventSet); /**< reset the hardware event counts in an event set */
+int PAPI_set_debug(int level); /**< set the current debug level for PAPI */
 // int PAPI_set_cmp_domain(int domain, int cidx); /**< set the component specific default execution domain for new event sets */
-// int PAPI_set_domain(int domain); /**< set the default execution domain for new event sets  */
+int PAPI_set_domain(int domain); /**< set the default execution domain for new event sets  */
 // int PAPI_set_cmp_granularity(int granularity, int cidx); /**< set the component specific default granularity for new event sets */
 // int PAPI_set_granularity(int granularity); /**<set the default granularity for new event sets */
-// int PAPI_set_multiplex(int EventSet); /**< convert a standard event set to a multiplexed event set */
+int PAPI_set_multiplex(int EventSet); /**< convert a standard event set to a multiplexed event set */
 // int PAPI_set_opt(int option, PAPI_option_t * ptr); /**< change the option settings of the PAPI library or a specific event set */
 // int PAPI_set_thr_specific(int tag, void *ptr); /**< save a pointer as a thread specific stored data structure */
 // void PAPI_shutdown(void); /**< finish using PAPI and free all related resources */
@@ -147,3 +147,5 @@ int PAPI_stop(int EventSet, long long * values); /**< stop counting hardware eve
 // int PAPI_get_component_index(char *name); /**< Return component index for component with matching name */
 // int PAPI_disable_component(int cidx); /**< Disables a component before init */
 // int PAPI_disable_component_by_name( char *name ); /**< Disable, before library init, a component by name. */
+int PAPI_set_domain_to_eventset(int domain, int EventSet); /**< set the default execution domain for new event sets  */
+int PAPI_get_event_name_to_code(char *eventName); /**< translate an ASCII PAPI preset or native name into an integer PAPI event code  */

@@ -45,7 +45,7 @@ Example counting some events:
 """
 
 
-from ._papi import lib, ffi
+from ._papiex import lib, ffi
 from .papi_high_types import Flips, Flops, IPC, EPC
 from .exceptions import papi_error
 
