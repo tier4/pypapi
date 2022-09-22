@@ -30,6 +30,7 @@
 /* BEGIN EXTERNAL DECLARATIONS */
 /*******************************/
 
+#define DEBUG
 
 extern hwi_presets_t user_defined_events[PAPI_MAX_USER_EVENTS];
 extern int user_defined_events_count;
@@ -65,7 +66,7 @@ extern int user_defined_events_count;
 */
 
 #ifdef DEBUG
-int _papi_hwi_debug;
+extern int _papi_hwi_debug;
 #endif
 
 

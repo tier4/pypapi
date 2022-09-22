@@ -129,6 +129,7 @@ int PAPI_set_domain(int domain); /**< set the default execution domain for new e
 // int PAPI_set_cmp_granularity(int granularity, int cidx); /**< set the component specific default granularity for new event sets */
 // int PAPI_set_granularity(int granularity); /**<set the default granularity for new event sets */
 int PAPI_set_multiplex(int EventSet); /**< convert a standard event set to a multiplexed event set */
+int PAPI_set_inherit(int EventSet); /**< event set to inherit */
 // int PAPI_set_opt(int option, PAPI_option_t * ptr); /**< change the option settings of the PAPI library or a specific event set */
 // int PAPI_set_thr_specific(int tag, void *ptr); /**< save a pointer as a thread specific stored data structure */
 // void PAPI_shutdown(void); /**< finish using PAPI and free all related resources */
